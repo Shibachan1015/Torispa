@@ -1,0 +1,67 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:           Torispa-backend
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/Shibachan1015/Torispa-backend#readme>
+homepage:       https://github.com/Shibachan1015/Torispa-backend#readme
+bug-reports:    https://github.com/Shibachan1015/Torispa-backend/issues
+author:         Shibachan1015
+maintainer:     siba1015@cpost.plala.or.jp
+copyright:      Shibachan1015
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/Shibachan1015/Torispa-backend
+
+library
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_Torispa_backend
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , scotty
+  default-language: Haskell2010
+
+executable Torispa-backend-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_Torispa_backend
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Torispa-backend
+    , aeson
+    , base >=4.7 && <5
+    , scotty
+  default-language: Haskell2010
+
+test-suite Torispa-backend-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_Torispa_backend
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Torispa-backend
+    , aeson
+    , base >=4.7 && <5
+    , scotty
+  default-language: Haskell2010

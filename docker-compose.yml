@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:12
+    environment:
+      POSTGRES_USER: sibataka
+      POSTGRES_PASSWORD: sibataka517
+      POSTGRES_DB: torispadb
+
+  web:
+    image: haskell:9.2.7-buster
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://sibataka:sibataka517@db:5432/torispadb
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - web
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - web
